@@ -1,6 +1,6 @@
 def containerName="docker-pipeline"
 def tag="latest"
-def dockerHubUser="kalyandock232"
+def dockerHubUser="anujsharma1990"
 def httpPort="8090"
 
 node {
@@ -29,23 +29,9 @@ node {
             sh "docker push $dockerUser/$containerName:$tag"
             echo "Image push complete"
         }
-         stage('Run App'){
-        /*sh "docker rm $containerName -f"
-        sh "docker pull $dockerHubUser/$containerName"
-        sh "docker run -d --rm -p $httpPort:$httpPort --name $containerName $dockerHubUser/$containerName:$tag"
-        echo "Application started on port: ${httpPort} (http)"
-        */
-        sh "kubectl get pods"
-    }
     }
 
     stage('Run App'){
-        sh "docker rm $containerName -f"
-        sh "docker pull $dockerHubUser/$containerName"
-        sh "docker run -d --rm -p $httpPort:$httpPort --name $containerName $dockerHubUser/$containerName:$tag"
-        echo "Application started on port: ${httpPort} (http)"
-        
-    } stage('Run App'){
         /*sh "docker rm $containerName -f"
         sh "docker pull $dockerHubUser/$containerName"
         sh "docker run -d --rm -p $httpPort:$httpPort --name $containerName $dockerHubUser/$containerName:$tag"
