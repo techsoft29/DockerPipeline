@@ -45,6 +45,13 @@ node {
         sh "docker run -d --rm -p $httpPort:$httpPort --name $containerName $dockerHubUser/$containerName:$tag"
         echo "Application started on port: ${httpPort} (http)"
         
+    } stage('Run App'){
+        /*sh "docker rm $containerName -f"
+        sh "docker pull $dockerHubUser/$containerName"
+        sh "docker run -d --rm -p $httpPort:$httpPort --name $containerName $dockerHubUser/$containerName:$tag"
+        echo "Application started on port: ${httpPort} (http)"
+        */
+        sh "kubectl get pods"
     }
 
 }
